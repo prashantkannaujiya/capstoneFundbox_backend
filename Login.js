@@ -26,13 +26,13 @@ const client = new MongoClient(url);
 app.post("/Register",function(req,res){
 console.log("Request is here")
             console.log(req.body);
-        if(err)console.log(err)
-        else{
+
+        
             
             db.collection('fund').insertOne(req.body)
             .then((data)=>{console.log(data);res.send(data)})
             .catch(err=>console.log('error'))
-        }
+        
     })
 
 
