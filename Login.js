@@ -116,18 +116,11 @@ app.get('/findAll/:cat',(req,res)=>{
     var k=req.params.cat;
     console.log(k);
         
-        db.collection('fund').find({'campaign.category':k}).toArray().then((data)=>{
+        db.collection('fund').aggregate([{$unwind:'$campaign'},{$match:{'campaign.category':k}},{$project:{campaign:1,_id:0}}]).toArray().then((data)=>{
             var d=[];
             console.log(data)
-            data.forEach((a)=>{
-                for(var i=0;i<a.campaign.length;i++)
-                {
-                    if(a.campaign[i].category==k)
-                    {
-                        d.push(a.campaign[i]);
-                    }
-                }
-            })
+          
+        
             res.send(d);
         }).catch(err=>console.log(err))
     })
@@ -139,7 +132,7 @@ app.get('/erase/:title', async(req,res)=>{
         try{
             var s=await db.collection('fund').findOne({'campaign.title':t});
             //console.log(s);
-             var z= await db.collection('fund').update({'campaign.title':t},{$pull:{campaign:{title:t}}})
+             var z= await db.collection('fund').updateOne({'campaign.title':t},{$pull:{campaign:{title:t}}})
             var ss=await db.collection('fund').find({name:s.name}).toArray();
            res.send(ss);
            console.log(ss);
