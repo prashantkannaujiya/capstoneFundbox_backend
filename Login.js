@@ -116,12 +116,12 @@ app.get('/findAll/:cat',(req,res)=>{
     var k=req.params.cat;
     console.log(k);
         
-        db.collection('fund').aggregate([{$unwind:'$campaign'},{$match:{'campaign.category':k}},{$project:{campaign:1,_id:0}}]).toArray().then((data)=>{
+        db.collection('fund').aggregate([{$unwind:'$campaign'},{$match:{'campaign.category':k}},{$project:{campaign:1,_id:0}},{$group:{_id:null,detail:{$addToSet:'$campaign'}}}]).toArray().then((data)=>{
             var d=[];
             console.log(data)
           
         
-            res.send(data);
+            res.send(data[0].detail);
         }).catch(err=>console.log(err))
     })
 
