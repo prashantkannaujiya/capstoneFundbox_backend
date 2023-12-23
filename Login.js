@@ -120,8 +120,14 @@ app.get('/findAll/:cat',(req,res)=>{
             var d=[];
             console.log(data)
           
-        
+        if(data.length!=0)
+        {
             res.send(data[0].detail);
+        }
+         else
+         {
+            res.send([])
+         }  
         }).catch(err=>console.log(err))
     })
 
