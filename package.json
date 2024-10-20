@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "Fundbox.js",
+  "main": "Login.js",
   "scripts": {
-    "start": "node Fundbox.js"
+    "start": "node Login.js"
   },
   "author": "",
   "license": "ISC",

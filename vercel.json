@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "Fundbox.js",
+        "src": "Login.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "Fundbox.js"
+        "dest": "Login.js"
       }
     ]
   }

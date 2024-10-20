@@ -201,3 +201,4 @@ app.get('/search/:token',async(req,res)=>{
 
     const port=process.env.PORT || 2100;
     app.listen(port,()=>{console.log('server runnning on 2100')})
+    module.exports = app
