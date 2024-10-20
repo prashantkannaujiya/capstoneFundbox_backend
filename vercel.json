@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "flavourBackend.js"
+        "dest": "Fundbox.js"
       }
     ]
   }
